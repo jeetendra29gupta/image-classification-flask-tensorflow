@@ -1,0 +1,15 @@
+<div id="result"
+     class="w3-container w3-section w3-panel w3-bottombar w3-border w3-round w3-card">
+
+    <h2 class="w3-center">Prediction Result</h2>
+
+    <img src="{{ url_for('static', filename='uploads/' + image) }}"
+         class=" w3-card w3-round w3-padding w3-image w3-hover-opacity w3-section" alt="Uploaded Image"
+         style="width:100%;max-width:256px">
+
+    <ul class="w3-ul w3-hoverable w3-section">
+        {% for item in result %}
+        <li>{{ item['label'] }}: {{ item['description'] }} with confidence {{ item['score'] }}</li>
+        {% endfor %}
+    </ul>
+</div>

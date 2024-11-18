@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+</head>
+<body class="w3-container w3-sand">
+
+<header class="w3-panel w3-center w3-section w3-light-blue w3-round w3-card w3-topbar w3-bottombar" id="header">
+    <h1 class="w3-center"><strong>{{title}}</strong></h1>
+</header>
+
+<div class="w3-container w3-section w3-center" style="max-width: 60vw; margin: 0 auto;">
+    <h1>Upload an Image for Classification</h1>
+    <form hx-post="/predict" hx-target="#result" hx-swap="outerHTML" class="w3-container w3-section w3-round w3-card"
+          enctype="multipart/form-data">
+        <input type="file" name="file" accept=".png,.jpg,.jpeg" class="w3-input w3-border w3-round w3-section" required>
+        <input type="submit" value="Classify Image" class="w3-button w3-green w3-round w3-section w3-block">
+    </form>
+
+    <div id="result">
+        <!-- Result will be injected here by HTMX -->
+    </div>
+
+</div>
+</body>
+</html>
